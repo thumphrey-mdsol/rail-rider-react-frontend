@@ -9,6 +9,10 @@ class MyStationsPage extends Component  {
     refreshStatus = () => {
         
     }
+    routeForm = () => {
+        this.props.history.push('/favorites_form')
+    }
+
     componentDidMount(){
         console.log("need to refresh the status here")
     }
@@ -17,6 +21,7 @@ class MyStationsPage extends Component  {
         return(                    
             
             <div style={{verticalMargin: 20, flex:1}}>
+                <button onClick={this.routeForm}> Add Favorite </button>
                 <FavStationContainer {...this.props}/>
             </div> 
                 

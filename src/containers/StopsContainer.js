@@ -4,8 +4,17 @@ import SearchBar from '../components/SearchBar';
 
 
 class StopsContainer extends Component  {
-   renderStops = () => {
-       return this.props.stops.map(stop=><StopCard key={stop.id} {...stop}/>)
+   state = {
+       search: '',
+   }
+
+   onChangeSearch = (e) => {
+        e.persist()
+        this.setState({search: e.target.value})
+   }
+   
+    renderStops = () => {
+       return this.props.stops.filter(stop=> stop.stop_name.includes(this.state.search)).map(stop=><StopCard key={stop.id} {...stop}/>)
     }
 
     render () {
@@ -13,7 +22,7 @@ class StopsContainer extends Component  {
         return(                    
             
             <div >
-                <SearchBar />
+                <SearchBar onChangeSearch={this.onChangeSearch} searchValue={this.state.search}/>
                 {this.renderStops()}
             </div> 
                 
@@ -23,3 +32,6 @@ class StopsContainer extends Component  {
 }
 
 export default StopsContainer;
+
+
+

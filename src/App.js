@@ -42,10 +42,10 @@ class App extends React.Component {
       <div className="app">
         <Nav />
         <Switch >
-          <Route path="/all_stops" render={(routerProps) => < StopsPage userId={this.state.user} stops={this.state.stops} {...routerProps}/>}/>
+          <Route path="/all_stops" render={(routerProps) => < StopsPage user={this.state.user} stops={this.state.stops} {...routerProps}/>}/>
           <Route exact path="/stops_near_me" render={(routerProps) => < StopsNearMePage />} />
-          <Route exact path="/favorites_form" render={(routerProps) => < FavoritesFormPage user={this.state.user} stops={this.state.stops} {...routerProps}/>} />
-          <Route exact path="/" render={(routerProps) => < MyStationsPage userId={this.state.user} favStations={this.state.favorites} stops={this.state.stops}{...routerProps}/>} />
+          <Route exact path="/favorites_form" render={(routerProps) => < FavoritesFormPage user={this.state.user} {...routerProps}/>} />
+          <Route exact path="/" render={(routerProps) => < MyStationsPage user={this.state.user} favStations={this.state.favorites} stops={this.state.stops}{...routerProps}/>} />
 
         </Switch>
       </div>

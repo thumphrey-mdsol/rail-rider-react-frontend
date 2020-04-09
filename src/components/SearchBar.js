@@ -8,7 +8,11 @@ class SearchBar extends Component  {
         return(                    
             
             <div >
-                Search Bar
+                <label>
+                    Search Stations: 
+                    <input value={this.props.searchValue} onChange={this.props.onChangeSearch}/>
+                </label>
+                <button>Search</button>
             </div> 
                 
             )
