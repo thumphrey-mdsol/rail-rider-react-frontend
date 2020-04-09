@@ -8,7 +8,7 @@ class FavoritesFormContainer extends Component {
     }
 
     createOptions = () => {
-        return this.props.stops.sort((a,b)=> a.stop_name-b.stop_name).map(stop=> <option key={stop.id} value={stop.id}>{stop.stop_name}</option>)
+        return this.props.stops.map(stop=> <option key={stop.id} value={stop.id}>{stop.stop_name}</option>)
     }
 
     handleNameChange = (e) => {

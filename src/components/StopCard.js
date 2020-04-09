@@ -12,15 +12,14 @@ class StopCard extends Component  {
     }
 
     handleSubmit = (e) => {
-        e.persist()
-        let favorite = {user_id: this.props.user.id, name: this.state.favoriteName, stop_id: this.state.station}
+        let favorite = {user_id: this.props.user.id, name: this.state.favoriteName, stop_id: this.props.id}
         fetch("http://localhost:3000/favorites",{
             method: "POST",
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(favorite)
         })
         .then(resp=> resp.json())
-        .then(this.props.history.push('/'))
+        .then(this.props.route())
     }
 
     handleChange = (e) => {
@@ -41,7 +40,7 @@ class StopCard extends Component  {
                         <form onSubmit={this.handleSubmit}>
                             Add To Favorites:
                             <label>
-                                <input placeholder="Favorite's Name"/>
+                                <input value={this.state.favoriteName} placeholder="Favorite's Name" onChange={this.handleChange}/>
                                 <input type="submit" value="submit" />
                             </label>
                         </form>

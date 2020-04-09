@@ -14,7 +14,11 @@ class StopsContainer extends Component  {
    }
    
     renderStops = () => {
-       return this.props.stops.filter(stop=> stop.stop_name.includes(this.state.search)).map(stop=><StopCard key={stop.id} {...stop}/>)
+       return this.props.stops.filter(stop=> stop.stop_name.includes(this.state.search)).map(stop=><StopCard key={stop.id} {...stop}user={this.props.user} route={this.sendToFavorites} />)
+    }
+
+    sendToFavorites = () => {
+        this.props.history.push('/')
     }
 
     render () {
