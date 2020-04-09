@@ -1,19 +1,68 @@
 import React, { Component } from 'react'
 
-class FavoritesFormContainer extends Component  {
-   
+class FavoritesFormContainer extends Component {
 
-    render () {
+    state = {
+        name: "",
+        station: 1796
+    }
 
-        return(                    
-            
+    createOptions = () => {
+        return this.props.stops.sort((a,b)=> a.stop_name-b.stop_name).map(stop=> <option key={stop.id} value={stop.id}>{stop.stop_name}</option>)
+    }
+
+    handleNameChange = (e) => {
+        e.persist()
+        this.setState({ name: e.target.value })
+    }
+
+    handleStationChange = (e) => {
+        e.persist()
+        this.setState({station: e.target.value})
+    }
+
+    handleSubmit = (e) => {
+        e.preventDefault()
+        let favorite = {user_id: this.props.user.id, name: this.state.name, stop_id: this.state.station}
+        fetch("http://localhost:3000/favorites",{
+            method: "POST",
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(favorite)
+        })
+        .then(resp=> resp.json())
+        .then(this.props.history.push('/'))
+    }
+
+    render() {
+
+        return (
+
             <div >
-                Form
-            </div> 
-                
-            )
-        }
-    
+                <form onSubmit={this.handleSubmit}>
+                    <div>
+                        Add Favorite:
+                    </div>
+                    <div>
+                        <label>
+                            Name:
+                        </label>
+                        <input value={this.state.name} onChange={this.handleNameChange} />
+                    </div>
+                    <div>
+                        <label>
+                            Stations:
+                        </label>
+                        <select onChange={this.handleStationChange}>
+                            {this.createOptions()}
+                        </select>
+                    </div>
+                    <input value="Submit" type="submit"/>
+                </form>
+            </div>
+
+        )
+    }
+
 }
 
 export default FavoritesFormContainer;

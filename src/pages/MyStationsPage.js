@@ -16,7 +16,7 @@ class MyStationsPage extends Component  {
     render () {
         return(                    
             
-            <div >
+            <div style={{verticalMargin: 20, flex:1}}>
                 <FavStationContainer {...this.props}/>
             </div> 
                 
