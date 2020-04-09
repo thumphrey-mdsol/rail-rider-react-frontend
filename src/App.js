@@ -45,7 +45,7 @@ class App extends React.Component {
           <Route path="/all_stops" render={(routerProps) => < StopsPage userId={this.state.user} stops={this.state.stops} {...routerProps}/>}/>
           <Route exact path="/stops_near_me" render={(routerProps) => < StopsNearMePage />} />
           <Route exact path="/favorites_form" render={(routerProps) => < FavoritesFormPage userId={this.state.user}/>} />
-          <Route exact path="/" render={(routerProps) => < MyStationsPage userId={this.state.user}/>} />
+          <Route exact path="/" render={(routerProps) => < MyStationsPage userId={this.state.user} favStations={this.state.favorites} {...routerProps}/>} />
 
         </Switch>
       </div>

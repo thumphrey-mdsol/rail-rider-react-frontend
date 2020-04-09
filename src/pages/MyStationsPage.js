@@ -17,7 +17,7 @@ class MyStationsPage extends Component  {
         return(                    
             
             <div >
-                <FavStationContainer />
+                <FavStationContainer {...this.props}/>
             </div> 
                 
             )
