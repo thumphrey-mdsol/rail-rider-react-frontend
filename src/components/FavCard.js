@@ -13,8 +13,8 @@ class FavCard extends Component  {
 
     renderTrainlines = () => {
         if(this.state.stop.trainlines){
-            return this.state.stop.trainlines.map(trainline=>
-                <div>
+            return this.state.stop.trainlines.map((trainline, index)=>
+                <div key={index}>
                     <div>
                         Line: {trainline.name}
                     </div>
@@ -34,7 +34,10 @@ class FavCard extends Component  {
         return(                    
             
             <div style={{verticalMargin: 20, flex: 1}}>
-                <h1> {this.props.name} </h1>
+                <div>
+                    <h1> {this.props.name} </h1>
+                    <button onClick={() => this.props.deleteFav(this.props.id)}>Remove</button>
+                </div>
                 <div> Station: {this.state.stop.stop_name}</div>
                 <div>{this.renderTrainlines()}</div>
             </div> 

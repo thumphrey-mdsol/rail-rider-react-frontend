@@ -8,7 +8,11 @@ class FavoritesFormContainer extends Component {
     }
 
     createOptions = () => {
-        return this.props.stops.map(stop=> <option key={stop.id} value={stop.id}>{stop.stop_name}</option>)
+        return this.props.stops.sort(function(a, b) {
+            var textA = a.stop_name.toUpperCase();
+            var textB = b.stop_name.toUpperCase();
+            return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
+        }).map(stop=> <option key={stop.id} value={stop.id}>{stop.stop_name}</option>)
     }
 
     handleNameChange = (e) => {
@@ -30,7 +34,7 @@ class FavoritesFormContainer extends Component {
             body: JSON.stringify(favorite)
         })
         .then(resp=> resp.json())
-        .then(this.props.history.push('/'))
+        .then(fav => this.props.addFav(fav), this.props.history.push('/'))
     }
 
     render() {

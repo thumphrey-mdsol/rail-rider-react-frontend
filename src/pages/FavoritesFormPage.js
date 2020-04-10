@@ -7,7 +7,7 @@ class FavoritesFormPage extends Component  {
 
         return(                    
             <div >
-                <FavoritesFormContainer user={this.props.user} stops={this.props.stops} history={this.props.history}/>
+                <FavoritesFormContainer user={this.props.user} stops={this.props.stops} history={this.props.history} addFav={this.props.addFav}/>
             </div> 
             )
         }

@@ -12,6 +12,7 @@ class StopCard extends Component  {
     }
 
     handleSubmit = (e) => {
+        e.preventDefault()
         let favorite = {user_id: this.props.user.id, name: this.state.favoriteName, stop_id: this.props.id}
         fetch("http://localhost:3000/favorites",{
             method: "POST",
@@ -19,7 +20,7 @@ class StopCard extends Component  {
             body: JSON.stringify(favorite)
         })
         .then(resp=> resp.json())
-        .then(this.props.route())
+        .then(fav => this.props.addFav(fav), this.props.route())
     }
 
     handleChange = (e) => {
