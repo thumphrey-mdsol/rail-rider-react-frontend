@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Trainline from './Trainline'
 
 class FavCard extends Component  {
    state= {
@@ -10,21 +11,10 @@ class FavCard extends Component  {
         .then(resp=> resp.json())
         .then(stop=> this.setState({stop}))
     }
-
     renderTrainlines = () => {
         if(this.state.stop.trainlines){
             return this.state.stop.trainlines.map((trainline, index)=>
-                <div key={index}>
-                    <div>
-                        Line: {trainline.name}
-                    </div>
-                    <div>
-                        Status: {trainline.status}
-                    </div>
-                    <div>
-                        Description: {trainline.status_description}
-                    </div>
-                </div>
+                <Trainline key={index} {...trainline}/>
             )
         }
     }

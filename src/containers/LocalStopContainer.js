@@ -5,31 +5,37 @@ class LocalStopContainer extends Component  {
     state = {
         lat: null,
         lon: null,
-        distances: [],
+        closest: [],
     }
-    
+    // when component mounts get lat/long
     componentDidMount(){
         navigator.geolocation.getCurrentPosition((position)=> this.displayLocationInfo(position))
-        this.findDistances()
-        
-    //     fetch('https://immense-journey-06214.herokuapp.com/schedule?stopIds=[635,101]').then(response => response.json()).then(console.log) 
     }
 
+    // get lat/long and set them to state, also get the distances from me to stations
     displayLocationInfo=(position)=> {
-        const lon = position.coords.longitude;
         const lat = position.coords.latitude;
-        this.setState({lon, lat})
-        console.log(position)
+        const lon = position.coords.longitude;
+        this.setState({lat, lon})
+        console.log(lat,lon)
+        this.findDistances(lat, lon)
     }
-
-    findDistances = () => {
-        if(this.state.lat && this.state.lon){
-            this.props.stops.map(stop=> this.setState(prevState => ({distances: [...prevState.distances, [Math.sqrt((stop.stop_lat-this.state.lat)**2 + (Math.abs(stop.stop_lon)-Math.abs(this.state.lon))**2), stop.id]]})))
+    // find didstances from me to stations and then find the closest 4
+    findDistances = (lat, lon) => {
+        let arr = []
+        if (lat&&lon){
+            this.props.stops.map(stop=> arr.push([Math.sqrt((stop.stop_lat-lat)**2 + (Math.abs(stop.stop_lon)-Math.abs(lon))**2), stop.id]))
         }
+        this.setState({closest: arr.sort().slice(0,4)})
     }
-
+    // find the closest 4 stations and render them
     findClosest = () =>{
-        return this.state.distances.sort().slice(0,4).map(arr => <ClosestStationsCard key={arr[1]} {...this.props.stops.filter(stop=>stop.id===arr[1])}/> )
+        if(this.state.closest){
+            return this.state.closest.map(innerArr => {
+                let thing = this.props.stops.filter(stop=>stop.id===innerArr[1])[0]
+                return <ClosestStationsCard key={innerArr[1]} name={thing.stop_name} id={thing.id}/>
+            })
+        }
     }
 
     render () {
@@ -37,15 +43,10 @@ class LocalStopContainer extends Component  {
         return(                    
             <div >
                 <div >
-                    {}
                     <div>
-                        <button onClick={this.findDistances}>Find Distances</button>
-                        {this.state.distances? this.findClosest():null}
-                        Lat:{this.state.lat}, Lon {this.state.lon}
-                        Distances:{this.state.distances.sort()}
+                        {this.findClosest()}
                     </div>
                 </div>
-
             </div> 
             )
         }
