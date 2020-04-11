@@ -17,6 +17,7 @@ class App extends React.Component {
     user: {},
     stops: [],
     favorites: [],
+    statuses: [],
   }
 
   componentDidMount(){
@@ -32,7 +33,11 @@ class App extends React.Component {
     fetch(`http://localhost:3000/favorites`)
     .then(resp=>resp.json())
     .then(favorites => this.setState({favorites}))
-
+    fetch(`http://localhost:3000/get_status`)
+    .then(resp=> resp.json())
+    .then(statuses => this.setState({statuses: statuses}))
+  }
+  componentDidUpdate(){
   }
 
   addFav = (fav) => {
@@ -57,11 +62,11 @@ class App extends React.Component {
         <Switch >
           <Route path="/all_stops" render={(routerProps) => < StopsPage user={this.state.user} stops={this.state.stops} {...routerProps} addFav={this.addFav}/>} />
 
-          <Route exact path="/stops_near_me" render={(routerProps) => < StopsNearMePage stops={this.state.stops} />} />
+          <Route exact path="/stops_near_me" render={(routerProps) => < StopsNearMePage stops={this.state.stops} statuses={this.state.statuses}/>} />
 
           <Route exact path="/favorites_form" render={(routerProps) => < FavoritesFormPage user={this.state.user} stops={this.state.stops} {...routerProps} addFav={this.addFav}/>} />
 
-          <Route exact path="/" render={(routerProps) => < MyStationsPage user={this.state.user} favStations={this.state.favorites} stops={this.state.stops} deleteFav={this.deleteFav} {...routerProps}/>} />
+          <Route exact path="/" render={(routerProps) => < MyStationsPage user={this.state.user} favStations={this.state.favorites} stops={this.state.stops} deleteFav={this.deleteFav} statuses={this.state.statuses} {...routerProps}/>} />
 
         </Switch>
       </div>

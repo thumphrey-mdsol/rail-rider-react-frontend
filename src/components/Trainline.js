@@ -2,27 +2,25 @@ import React, { Component } from 'react'
 
 class Trainline extends Component  {
    state= {
-       statuses: null,
        status: "",
        description: "",
    }
 
-    componentDidMount(){
-        this.getFetch()
-    }
-
-    getFetch = async() => {
-        await fetch(`http://localhost:3000/get_status`)
-        .then(resp=> resp.json())
-        .then(console.log)
-        await this.getStatus()
-    }
-    // get => this.setState({statuses: get.service.subway.line})
-    getStatus = async() => {
-        if(this.state.statuses){
-            let s =  this.state.statuses.filter(group=> group.name.includes(this.props.name))[0]
+    getStatus = () => {
+        if(this.props.statuses){
+            let s =  this.props.statuses.filter(lineGroup=> lineGroup.name.includes(this.props.name))[0]
             // need to parse status better
-            this.setState({status: s.status, description: s.text})
+            
+            return (
+                <div>
+                    <div>
+                        Status: {s.status}
+                    </div>
+                    <div>
+                        Description: {s.text}
+                    </div>
+                </div>
+            )
         }
     }
 
@@ -31,13 +29,10 @@ class Trainline extends Component  {
         return(                    
             
             <div style={{verticalMargin: 20, flex: 1}}>
-                <div>
+                <h3>
                     Line: {this.props.name}
-                </div>
-                <div>Status: {this.state.status}</div>
-                <div>
-                    Description: {this.state.description}
-                </div>
+                </h3>
+                {this.getStatus()}
             </div> 
                  
             )

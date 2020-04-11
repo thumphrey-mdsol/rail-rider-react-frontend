@@ -7,7 +7,7 @@ class StopsNearMePage extends Component  {
 
         return(                    
             <div >
-                <LocalStopContainer stops={this.props.stops}/>
+                <LocalStopContainer statuses={this.props.statuses} stops={this.props.stops}/>
             </div> 
             )
         }

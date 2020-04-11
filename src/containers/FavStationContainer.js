@@ -4,7 +4,7 @@ import FavCard from '../components/FavCard'
 class FavStationContainer extends Component  {
     
     renderFavStation = () => {
-        return this.props.favStations.map(station=> <FavCard key={station.id} {...station} deleteFav={this.props.deleteFav} user={this.props.user}/>)
+        return this.props.favStations.map(station=> <FavCard key={station.id} {...station} statuses={this.props.statuses} deleteFav={this.props.deleteFav} user={this.props.user}/>)
     }
 
     render () {

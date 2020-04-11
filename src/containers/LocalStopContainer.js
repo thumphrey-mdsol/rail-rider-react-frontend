@@ -3,10 +3,9 @@ import ClosestStationsCard from '../components/ClosestStationsCard'
 
 class LocalStopContainer extends Component  {
     state = {
-        lat: null,
-        lon: null,
         closest: [],
     }
+
     // when component mounts get lat/long
     componentDidMount(){
         navigator.geolocation.getCurrentPosition((position)=> this.displayLocationInfo(position))
@@ -16,8 +15,6 @@ class LocalStopContainer extends Component  {
     displayLocationInfo=(position)=> {
         const lat = position.coords.latitude;
         const lon = position.coords.longitude;
-        this.setState({lat, lon})
-        console.log(lat,lon)
         this.findDistances(lat, lon)
     }
     // find didstances from me to stations and then find the closest 4
@@ -33,7 +30,7 @@ class LocalStopContainer extends Component  {
         if(this.state.closest){
             return this.state.closest.map(innerArr => {
                 let thing = this.props.stops.filter(stop=>stop.id===innerArr[1])[0]
-                return <ClosestStationsCard key={innerArr[1]} name={thing.stop_name} id={thing.id}/>
+                return <ClosestStationsCard statuses={this.props.statuses} key={innerArr[1]} name={thing.stop_name} id={thing.id}/>
             })
         }
     }

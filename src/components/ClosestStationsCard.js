@@ -16,7 +16,7 @@ class ClosestStationsCard extends Component  {
     renderTrainlines = () => {
         if(this.state.stop){
             return this.state.stop.trainlines.map((trainline, index)=>
-                <Trainline key={index} {...trainline}/>
+                <Trainline statuses={this.props.statuses} key={index} {...trainline}/>
             )
         }
     }
@@ -26,7 +26,9 @@ class ClosestStationsCard extends Component  {
         return(                    
             
             <div style={{verticalMargin: 20, flex: 1}}>
-                {this.props.name}
+                <h1>
+                    {this.props.name}
+                </h1> 
                 <div>{this.renderTrainlines()}</div>
             </div> 
                  

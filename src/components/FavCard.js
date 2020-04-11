@@ -14,7 +14,7 @@ class FavCard extends Component  {
     renderTrainlines = () => {
         if(this.state.stop.trainlines){
             return this.state.stop.trainlines.map((trainline, index)=>
-                <Trainline key={index} {...trainline}/>
+                <Trainline key={index} statuses={this.props.statuses} {...trainline}/>
             )
         }
     }
