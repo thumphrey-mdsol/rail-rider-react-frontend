@@ -9,11 +9,13 @@ import StopsPage from './pages/StopsPage'
 import FavoritesFormPage from './pages/FavoritesFormPage'
 import StopsNearMePage from './pages/StopsNearMePage'
 import Nav from './nav/Nav'
+import LoginPage from './pages/LoginPage';
+import SignupPage from './pages/SignupPage';
 
 
 class App extends React.Component {
   state ={
-    user_id: 30,
+    user_id: 31,
     user: {},
     stops: [],
     favorites: [],
@@ -53,20 +55,47 @@ class App extends React.Component {
       })
 }
 
+handleSignup = (e) => {
+  console.log("signing Up!")
+  // post
+  // see errors
+  // route to favorites page
+}
+
+handleLogin = (e) => {
+  console.log("logging in")
+// get
+// see errors
+// route to favorites page
+}
+
+handleLogout = (e) => {
+  console.log("logging out")
+// set user state to null
+}
+
   render(){
 
 
     return (
       <div className="app">
-        <Nav />
+        <Nav user={this.state.user} />
         <Switch >
           <Route path="/all_stops" render={(routerProps) => < StopsPage user={this.state.user} stops={this.state.stops} {...routerProps} addFav={this.addFav}/>} />
 
-          <Route exact path="/stops_near_me" render={(routerProps) => < StopsNearMePage stops={this.state.stops} statuses={this.state.statuses}/>} />
+          <Route path="/stops_near_me" render={(routerProps) => < StopsNearMePage stops={this.state.stops} statuses={this.state.statuses}/>} />
 
-          <Route exact path="/favorites_form" render={(routerProps) => < FavoritesFormPage user={this.state.user} stops={this.state.stops} {...routerProps} addFav={this.addFav}/>} />
+          <Route path="/favorites_form" render={(routerProps) => < FavoritesFormPage user={this.state.user} stops={this.state.stops} {...routerProps} addFav={this.addFav}/>} />
 
-          <Route exact path="/" render={(routerProps) => < MyStationsPage user={this.state.user} favStations={this.state.favorites} stops={this.state.stops} deleteFav={this.deleteFav} statuses={this.state.statuses} {...routerProps}/>} />
+          <Route path="/favorites" render={(routerProps) => < MyStationsPage user={this.state.user} favStations={this.state.favorites} stops={this.state.stops} deleteFav={this.deleteFav} statuses={this.state.statuses} {...routerProps}/>} />
+
+          <Route path="/signup" render={(routerProps) => < SignupPage user={this.state.user} />} />
+
+          <Route path="/login" render={(routerProps) => < LoginPage user={this.state.user} />} />
+
+          <Route path="/logout" render={(routerProps) => < LoginPage user={this.state.user} />} />
+
+          <Route path="/" render={(routerProps) => "hello"} />
 
         </Switch>
       </div>

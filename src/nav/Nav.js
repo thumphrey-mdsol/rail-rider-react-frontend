@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -20,7 +20,8 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function ButtonAppBar() {
+
+export default function ButtonAppBar(props) {
     const classes = useStyles();
 
     return (
@@ -28,9 +29,9 @@ export default function ButtonAppBar() {
             <AppBar position="static">
                 <Toolbar>
                     <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
-                        <NavLink to="/" >
+                        <Link to="/favorites" >
                             Rail Rider
-                        </NavLink>
+                        </Link>
                     </IconButton>
                     <Typography edge="start" variant="7" className={classes.title}>
                         <NavLink to="/all_stops" >
@@ -42,7 +43,16 @@ export default function ButtonAppBar() {
                             Nearby Stops
                         </NavLink>
                     </Typography>
-                    <Button color="inherit">Login</Button>
+                    <Button color="inherit" >{ 
+                        props.user? 
+                            <NavLink to="/Logout" >
+                                Logout
+                            </NavLink> :
+                             <NavLink to="/Login" >
+                             Login
+                            </NavLink>
+                             }
+                    </Button>
                 </Toolbar>
             </AppBar>
         </div>
