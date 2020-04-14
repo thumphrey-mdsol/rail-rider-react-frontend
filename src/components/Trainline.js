@@ -9,8 +9,6 @@ class Trainline extends Component  {
     getStatus = () => {
         if(this.props.statuses){
             let s =  this.props.statuses.filter(lineGroup=> lineGroup.name.includes(this.props.name))[0]
-            // need to parse status better
-            
             return (
                 <div>
                     <div>

@@ -23,7 +23,7 @@ class FavCard extends Component  {
 
         return(                    
             
-            <div style={{verticalMargin: 20, flex: 1}}>
+            <div style={{margin:10}}>
                 <div>
                     <h1> {this.props.name} </h1>
                     <button onClick={() => this.props.deleteFav(this.props.id)}>Remove</button>

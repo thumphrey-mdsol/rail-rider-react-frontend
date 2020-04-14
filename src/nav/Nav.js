@@ -18,6 +18,9 @@ const useStyles = makeStyles((theme) => ({
     title: {
         flexGrow: 1,
     },
+    title1:{
+        marginRight: 10
+    }
 }));
 
 
@@ -33,7 +36,7 @@ export default function ButtonAppBar(props) {
                             Rail Rider
                         </Link>
                     </IconButton>
-                    <Typography edge="start" variant="7" className={classes.title}>
+                    <Typography edge="start" variant="7" className={classes.title1}>
                         <NavLink id="inactive" activeId="activeLink" to="/all_stops" >
                             All Stops
                         </NavLink>

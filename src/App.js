@@ -40,6 +40,7 @@ class App extends React.Component {
     .then(statuses => this.setState({statuses: statuses}))
   }
   componentDidUpdate(){
+    
   }
 
   addFav = (fav) => {
@@ -78,7 +79,7 @@ handleLogout = (e) => {
 
 
     return (
-      <div className="app">
+      <div className="app" style={{backgroundColor: "lightgrey"}}>
         <Nav user={this.state.user} />
         <Switch >
           <Route path="/all_stops" render={(routerProps) => < StopsPage user={this.state.user} stops={this.state.stops} {...routerProps} addFav={this.addFav}/>} />

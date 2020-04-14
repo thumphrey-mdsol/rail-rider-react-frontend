@@ -20,8 +20,8 @@ class MyStationsPage extends Component  {
     render () {
         return(                    
             
-            <div style={{verticalMargin: 20, flex:1}}>
-                <button onClick={this.routeForm}> Add Favorite </button>
+            <div style={{margin:15}}>
+                <button onClick={this.routeForm} style={{justifyContent: "end"}}> Add Favorite </button>
                 <FavStationContainer {...this.props}/>
             </div> 
                 

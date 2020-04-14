@@ -1,17 +1,16 @@
-import React, { Component } from 'react'
+import React from 'react';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import Typography from '@material-ui/core/Typography';
+import Container from '@material-ui/core/Container';
 import StopsContainer from '../containers/StopsContainer';
 
-class StopsPage extends Component  {
- 
-    render () {
+const StopsPage = (props) =>{
 
-        return(                    
-            <div >
-                <StopsContainer {...this.props}/>
-            </div> 
-            )
-        }
-    
+        return(                   
+            <Container maxWidth="lg" >
+                <StopsContainer {...props}/>
+            </Container> 
+        )
 }
 
 export default StopsPage;
