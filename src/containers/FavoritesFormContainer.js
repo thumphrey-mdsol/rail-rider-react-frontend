@@ -41,11 +41,11 @@ class FavoritesFormContainer extends Component {
 
         return (
 
-            <div >
+            <div style={{display: "flex",justifyContent: "space-around", margin:10}} >
                 <form onSubmit={this.handleSubmit}>
-                    <div>
+                    <b>
                         Add Favorite:
-                    </div>
+                    </b>
                     <div>
                         <label>
                             Name:

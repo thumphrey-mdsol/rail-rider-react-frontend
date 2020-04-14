@@ -29,7 +29,7 @@ class FavCard extends Component  {
                     <h1> {this.props.name} </h1>
                     <button style={{maxHeight: 20, maxWidth: 100, justifyContent: "center", alignSelf: "center"}} onClick={() => this.props.deleteFav(this.props.id)} >Remove</button>
                 </div>
-                <div> Station: {this.state.stop.stop_name}</div>
+                <div> <b>Station:</b> {this.state.stop.stop_name}</div>
                 <div>{this.renderTrainlines()}</div>
             </div> 
                  
