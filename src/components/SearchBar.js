@@ -7,7 +7,7 @@ class SearchBar extends Component  {
 
         return(                    
             
-            <div >
+            <div style={{marginTop:10, marginBottom:10}} >
                 <label>
                     Search Stations: 
                     <input value={this.props.searchValue} onChange={this.props.onChangeSearch}/>
