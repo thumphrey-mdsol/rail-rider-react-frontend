@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Trainline from './Trainline'
+import { findByLabelText } from '@testing-library/react'
 
 class FavCard extends Component  {
    state= {
@@ -23,10 +24,10 @@ class FavCard extends Component  {
 
         return(                    
             
-            <div style={{margin:10}}>
-                <div>
+            <div style={{padding:10}}>
+                <div style={{display: "flex", flexDirection: "row", justifyContent: "space-between"}}>
                     <h1> {this.props.name} </h1>
-                    <button onClick={() => this.props.deleteFav(this.props.id)}>Remove</button>
+                    <button style={{maxHeight: 20, maxWidth: 100, justifyContent: "center", alignSelf: "center"}} onClick={() => this.props.deleteFav(this.props.id)} >Remove</button>
                 </div>
                 <div> Station: {this.state.stop.stop_name}</div>
                 <div>{this.renderTrainlines()}</div>

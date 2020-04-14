@@ -21,7 +21,7 @@ class MyStationsPage extends Component  {
         return(                    
             
             <div style={{margin:15}}>
-                <button onClick={this.routeForm} style={{justifyContent: "end"}}> Add Favorite </button>
+                <button onClick={this.routeForm} style={{display: "flex", justifyContent: "flex-end", alignSelf: "bottom", marginBottom:10}}> Add Favorite </button>
                 <FavStationContainer {...this.props}/>
             </div> 
                 

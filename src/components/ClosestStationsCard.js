@@ -25,10 +25,10 @@ class ClosestStationsCard extends Component  {
 
         return(                    
             
-            <div style={{verticalMargin: 20, flex: 1}}>
-                <h1>
-                    {this.props.name}
-                </h1> 
+            <div style={{padding: 10, flex: 1}}>
+                <div style={{}}>
+                    <h1>{this.props.name}</h1>
+                </div>
                 <div>{this.renderTrainlines()}</div>
             </div> 
                  

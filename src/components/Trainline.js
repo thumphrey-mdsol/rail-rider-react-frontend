@@ -12,10 +12,10 @@ class Trainline extends Component  {
             return (
                 <div>
                     <div>
-                        Status: {s.status}
+                        <b>Status:</b> {s.status}
                     </div>
                     <div>
-                        Description: {s.text}
+                        <b>Description:</b> {s.text}
                     </div>
                 </div>
             )

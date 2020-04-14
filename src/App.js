@@ -79,7 +79,7 @@ handleLogout = (e) => {
 
 
     return (
-      <div className="app" style={{backgroundColor: "lightgrey"}}>
+      <div className="app" style={{backgroundColor: "lightgrey", flexGrow:1, minHeight: "100vh", minWidth: "100vw"}}>
         <Nav user={this.state.user} />
         <Switch >
           <Route path="/all_stops" render={(routerProps) => < StopsPage user={this.state.user} stops={this.state.stops} {...routerProps} addFav={this.addFav}/>} />

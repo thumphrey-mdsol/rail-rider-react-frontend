@@ -14,7 +14,7 @@ const FavStationContainer = (props) =>  {
     
     const renderFavStation = () => {
         return props.favStations.map(station=> 
-            <Grid item md={6}>
+            <Grid key={station.id} item md={6}>
                 <Paper elevation={3}>
                     <FavCard key={station.id} {...station} statuses={props.statuses} deleteFav={props.deleteFav} user={props.user}/>
                 </Paper>
