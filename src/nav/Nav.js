@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -29,26 +29,26 @@ export default function ButtonAppBar(props) {
             <AppBar position="static">
                 <Toolbar>
                     <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
-                        <Link to="/favorites" >
+                        <Link id="inactive" activeId="activeLink" to="/favorites" >
                             Rail Rider
                         </Link>
                     </IconButton>
                     <Typography edge="start" variant="7" className={classes.title}>
-                        <NavLink to="/all_stops" >
+                        <NavLink id="inactive" activeId="activeLink" to="/all_stops" >
                             All Stops
                         </NavLink>
                     </Typography>
                     <Typography edge="start" variant="7" className={classes.title}>
-                        <NavLink to="/stops_near_me" >
+                        <NavLink id="inactive" activeId="activeLink" to="/stops_near_me" >
                             Nearby Stops
                         </NavLink>
                     </Typography>
                     <Button color="inherit" >{ 
                         props.user? 
-                            <NavLink to="/Logout" >
+                            <NavLink id="inactive" activeId="activeLink" to="/Logout" >
                                 Logout
                             </NavLink> :
-                             <NavLink to="/Login" >
+                             <NavLink id="inactive" activeId="activeLink" to="/Login" >
                              Login
                             </NavLink>
                              }

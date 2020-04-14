@@ -34,7 +34,7 @@ class FavoritesFormContainer extends Component {
             body: JSON.stringify(favorite)
         })
         .then(resp=> resp.json())
-        .then(fav => this.props.addFav(fav), this.props.history.push('/'))
+        .then(fav => this.props.addFav(fav), this.props.history.push('/favorites'))
     }
 
     render() {

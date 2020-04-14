@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -25,6 +25,8 @@ function Copyright() {
     </Typography>
   );
 }
+
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -59,6 +61,17 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SignInSide() {
   const classes = useStyles();
+    // const [password, setPassword] = useState('')
+    // const [passwordConfirmation, setPasswordConfirmation] = useState('')
+    // const [username, setUsername] = useState('')
+
+    // const handleSubmit = (e) => {
+    //     e.preventDefault();
+    //     fetch("URL", {
+    //         method: "POST",
+            
+    //     })
+    // }
 
   return (
     <Grid container component="main" className={classes.root}>

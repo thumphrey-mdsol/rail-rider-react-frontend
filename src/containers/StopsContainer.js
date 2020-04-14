@@ -18,7 +18,7 @@ class StopsContainer extends Component  {
     }
 
     sendToFavorites = () => {
-        this.props.history.push('/')
+        this.props.history.push('/favorites')
     }
 
     render () {
