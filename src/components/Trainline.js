@@ -4,6 +4,11 @@ class Trainline extends Component  {
    state= {
        status: "",
        description: "",
+       showMore: false,
+   }
+
+   handleClick = () => {
+       this.setState(prevState=> ({showMore: !prevState.showMore}) )
    }
 
     getStatus = () => {
@@ -13,12 +18,12 @@ class Trainline extends Component  {
                 <div>
                     <div>
                         <b>Status:</b> {s.status}
+                        <button onClick={this.handleClick}>{this.state.showMore? "See less..." : "See more..." }</button>
                     </div>
+                    {this.state.showMore && <div><b>Description:</b> {s.text}</div>}
+                    <br/>
                     <div>
-                        <b>Description:</b> {s.text}
-                    </div>
-                    <div>
-                        Departures:
+                        <b> Departures: </b> 
                     </div>
                 </div>
             )
