@@ -4,7 +4,7 @@ class FavoritesFormContainer extends Component {
 
     state = {
         name: "",
-        station: 1796
+        station: 3694
     }
 
     createOptions = () => {
