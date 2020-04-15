@@ -17,6 +17,9 @@ class Trainline extends Component  {
                     <div>
                         <b>Description:</b> {s.text}
                     </div>
+                    <div>
+                        Departures:
+                    </div>
                 </div>
             )
         }
