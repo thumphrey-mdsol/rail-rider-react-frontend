@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import UiSignup from '../components/UiSignup'
 
 class SignupPage extends Component  {
  
@@ -6,7 +7,7 @@ class SignupPage extends Component  {
 
         return(                    
             <div >
-                Login
+                <UiSignup {...this.props}/>
             </div> 
             )
         }

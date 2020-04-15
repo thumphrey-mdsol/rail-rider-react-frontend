@@ -47,12 +47,8 @@ export default function ButtonAppBar(props) {
                         </NavLink>
                     </Typography>
                     <Button color="inherit" >{ 
-                        props.user? 
-                            <NavLink id="inactive" activeId="activeLink" to="/Logout" >
-                                Logout
-                            </NavLink> :
                              <NavLink id="inactive" activeId="activeLink" to="/Login" >
-                             Login
+                             Login/Signup
                             </NavLink>
                              }
                     </Button>

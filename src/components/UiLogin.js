@@ -33,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
     height: '100vh',
   },
   image: {
-    backgroundImage: 'url(https://source.unsplash.com/random)',
+    backgroundImage: 'url(https://photos.smugmug.com/USA/New-York/New-York-City/i-2HSv99H/0/48cecf03/L/2017NYC-34-L.jpg)',
     backgroundRepeat: 'no-repeat',
     backgroundColor:
       theme.palette.type === 'light' ? theme.palette.grey[50] : theme.palette.grey[900],
@@ -59,7 +59,12 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SignInSide() {
+export default function SignInSide(props) {
+    const handleSubmit = (e) => {
+      e.preventDefault()
+      // signup to backend, render errors or reroute to favorites
+      props.history.push('/favorites')
+    }
   const classes = useStyles();
     // const [password, setPassword] = useState('')
     // const [passwordConfirmation, setPasswordConfirmation] = useState('')
@@ -118,6 +123,7 @@ export default function SignInSide() {
               variant="contained"
               color="primary"
               className={classes.submit}
+              onClick={handleSubmit}
             >
               Sign In
             </Button>

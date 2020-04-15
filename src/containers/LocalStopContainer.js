@@ -39,7 +39,7 @@ const LocalStopContainer = (props) => {
             return closest.map(innerArr => {
                 let thing = props.stops.filter(stop=>stop.id===innerArr[1])[0]
                 return (
-                    <Grid item md={6}>
+                    <Grid key={innerArr[1]} item md={6}>
                         <Paper elevation={3}>
                             <ClosestStationsCard statuses={props.statuses} key={innerArr[1]} name={thing.stop_name} id={thing.id}/>
                         </Paper>

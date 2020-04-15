@@ -7,7 +7,7 @@ class LoginPage extends Component  {
 
         return(                    
             <div >
-                <UiLogin />
+                <UiLogin {...this.props}/>
             </div> 
             )
         }

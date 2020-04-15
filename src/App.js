@@ -90,13 +90,13 @@ handleLogout = (e) => {
 
           <Route path="/favorites" render={(routerProps) => < MyStationsPage user={this.state.user} favStations={this.state.favorites} stops={this.state.stops} deleteFav={this.deleteFav} statuses={this.state.statuses} {...routerProps}/>} />
 
-          <Route path="/signup" render={(routerProps) => < SignupPage user={this.state.user} />} />
+          <Route path="/signup" render={(routerProps) => < SignupPage user={this.state.user} {...routerProps}/>} />
 
-          <Route path="/login" render={(routerProps) => < LoginPage user={this.state.user} />} />
+          <Route path="/login" render={(routerProps) => < LoginPage {...routerProps} user={this.state.user} />} />
 
-          <Route path="/logout" render={(routerProps) => < LoginPage user={this.state.user} />} />
+          <Route path="/logout" render={(routerProps) => < LoginPage user={this.state.user} {...routerProps} />} />
 
-          <Route path="/" render={(routerProps) => "hello"} />
+          {/* <Route path="/" render={(routerProps) => "hello"} /> */}
 
         </Switch>
       </div>
