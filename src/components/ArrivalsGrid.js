@@ -35,6 +35,37 @@ const randomTime1 = () => {
     return(`${h}:${m}PM`)
 }
 
+const randomTime2 = () => {
+  let d = new Date();
+  let h = d.getHours();
+  let m = d.getMinutes()+ Math.floor(Math.random() * 40)
+  if(m>59){
+      m = m-60
+      h++
+  }
+  if(h>=12){
+      h = h-12
+  }
+  return(`${h}:${m}PM`)
+}
+
+const randomTime3 = () => {
+  let d = new Date();
+  let h = d.getHours();
+  let m = d.getMinutes()+ Math.floor(Math.random() * 60)
+  if(m>118){
+      m = m-120
+      h++
+  } else if (m>59){
+    m = m-60
+    h++
+  }
+  if(h>=12){
+      h = h-12
+  }
+  return(`${h}:${m}PM`)
+}
+
 
 
 export default function CenteredGrid() {
@@ -48,15 +79,15 @@ export default function CenteredGrid() {
       <div className={classes.root}>
         <div >
           Northbound:
-          <div>Closesttime1</div>
-          <div>Closesttime2</div>
-          <div>Closesttime3</div>
+          <div>{randomTime1()}</div>
+          <div>{randomTime2()}</div>
+          <div>{randomTime3()}</div>
         </div>
         <div >
           Southbound:
-          <div>Closesttime1</div>
-          <div>Closesttime2</div>
-          <div>Closesttime3</div>
+          <div>{randomTime1()}</div>
+          <div>{randomTime2()}</div>
+          <div>{randomTime3()}</div>
         </div>
       </div>
     </div>

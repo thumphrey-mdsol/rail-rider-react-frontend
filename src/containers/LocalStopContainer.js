@@ -33,7 +33,7 @@ const LocalStopContainer = (props) => {
         if ( position ){
             props.stops.map(stop=> arr.push([Math.sqrt((stop.stop_lat-lat)**2 + (Math.abs(stop.stop_lon)-Math.abs(lon))**2), stop.id]))
         }
-        findClosest(arr.sort().slice(0,4))
+        return findClosest(arr.sort().slice(0,4))
     }
 
     useEffect(() => {
@@ -50,23 +50,25 @@ const LocalStopContainer = (props) => {
         console.log(position, error, arr)
         if(arr){
             return arr.map(innerArr => {
-                let thing = props.stops.filter(stop=>stop.id===innerArr[1])[0]
+                let station = props.stops.filter(stop=>stop.id===innerArr[1])[0]
                 return (
                     <Grid key={innerArr[1]} item md={6}>
                         <Paper elevation={3}>
-                            {console.log(thing)}
-                            <ClosestStationsCard statuses={props.statuses} key={innerArr[1]} name={thing.stop_name} id={thing.id}/>
+                            {console.log(station)}
+                            <ClosestStationsCard statuses={props.statuses} key={innerArr[1]} name={station.stop_name} id={station.id}/>
+                            {console.log(innerArr[1], station.stop_name, station.id)}
                         </Paper>
                     </Grid>
                 )
             })
         }
     }
-        return(                    
-            <Grid container className={classes.root} spacing={3}>
-                {findDistances()}
-            </Grid> 
-            )
+    
+    return(                    
+        <Grid container className={classes.root} spacing={3}>
+            {findDistances()}
+        </Grid> 
+        )
 }
 
 export default LocalStopContainer;

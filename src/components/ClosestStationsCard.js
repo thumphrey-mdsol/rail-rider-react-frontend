@@ -8,6 +8,7 @@ class ClosestStationsCard extends Component  {
     }
 
     componentDidMount(){
+        console.log("mounted")
         fetch(`http://localhost:3000/stops/${this.props.id}`)
         .then(resp=> resp.json())
         .then(stop=> this.setState({stop}))
