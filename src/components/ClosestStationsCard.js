@@ -22,7 +22,7 @@ class ClosestStationsCard extends Component  {
     }
 
     render () {
-
+        console.log("InsideStation")
         return(                    
             
             <div style={{padding: 10, flex: 1}}>

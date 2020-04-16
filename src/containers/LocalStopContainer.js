@@ -14,33 +14,47 @@ const LocalStopContainer = (props) => {
     const classes = useStyles(props)
     const [closest, setClosest] = useState([])
 
-    // when component mounts get lat/long
-    useEffect(()=>{
-        navigator.geolocation.getCurrentPosition((position)=> displayLocationInfo(position))
-    }, [closest])
-
-    // get lat/long and set them to state, also get the distances from me to stations
-    const displayLocationInfo=(position)=> {
-        const lat = position.coords.latitude;
-        const lon = position.coords.longitude;
-        findDistances(lat, lon)
-    }
-    // find didstances from me to stations and then find the closest 4
-    const findDistances = (lat, lon) => {
+    const [position, setPosition] = useState({});
+    const [error, setError] = useState(null);
+  
+    const onChange = ({coords}) => {
+        setPosition({
+        latitude: coords.latitude,
+        longitude: coords.longitude,
+        });
+    };
+    const onError = (error) => {
+        setError(error.message);
+    };
+    const findDistances = () => {
         let arr = []
-        if (lat&&lon){
+        let lat = position.latitude
+        let lon = position.longitude
+        if ( position ){
             props.stops.map(stop=> arr.push([Math.sqrt((stop.stop_lat-lat)**2 + (Math.abs(stop.stop_lon)-Math.abs(lon))**2), stop.id]))
         }
-        setClosest(arr.sort().slice(0,4))
+        findClosest(arr.sort().slice(0,4))
     }
-    // find the closest 4 stations and render them
-    const findClosest = () =>{
-        if(closest){
-            return closest.map(innerArr => {
+
+    useEffect(() => {
+        const geo = navigator.geolocation;
+        if (!geo) {
+        setError('Geolocation is not supported');
+        return;
+        }
+        let watcher = geo.watchPosition(onChange, onError);
+        return () => geo.clearWatch(watcher);
+    }, []);
+
+    const findClosest = (arr) =>{
+        console.log(position, error, arr)
+        if(arr){
+            return arr.map(innerArr => {
                 let thing = props.stops.filter(stop=>stop.id===innerArr[1])[0]
                 return (
                     <Grid key={innerArr[1]} item md={6}>
                         <Paper elevation={3}>
+                            {console.log(thing)}
                             <ClosestStationsCard statuses={props.statuses} key={innerArr[1]} name={thing.stop_name} id={thing.id}/>
                         </Paper>
                     </Grid>
@@ -50,7 +64,7 @@ const LocalStopContainer = (props) => {
     }
         return(                    
             <Grid container className={classes.root} spacing={3}>
-                {findClosest()}
+                {findDistances()}
             </Grid> 
             )
 }

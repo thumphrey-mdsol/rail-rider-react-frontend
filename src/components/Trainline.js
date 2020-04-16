@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import ArrivalsGrid from './ArrivalsGrid'
 
 class Trainline extends Component  {
    state= {
@@ -23,7 +24,7 @@ class Trainline extends Component  {
                     {this.state.showMore && <div><b>Description:</b> {s.text}</div>}
                     <br/>
                     <div>
-                        <b> Departures: </b> 
+                        <ArrivalsGrid />
                     </div>
                 </div>
             )
