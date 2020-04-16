@@ -32,13 +32,16 @@ const randomTime1 = () => {
     if(h>=12){
         h = h-12
     }
+    if(m<10){
+      m = "0"+m
+    }
     return(`${h}:${m}PM`)
 }
 
 const randomTime2 = () => {
   let d = new Date();
   let h = d.getHours();
-  let m = d.getMinutes()+ Math.floor(Math.random() * 40)
+  let m = d.getMinutes()+ 20 + Math.floor(Math.random() * 20)
   if(m>59){
       m = m-60
       h++
@@ -46,13 +49,16 @@ const randomTime2 = () => {
   if(h>=12){
       h = h-12
   }
+  if(m<10){
+    m = "0"+m
+  }
   return(`${h}:${m}PM`)
 }
 
 const randomTime3 = () => {
   let d = new Date();
   let h = d.getHours();
-  let m = d.getMinutes()+ Math.floor(Math.random() * 60)
+  let m = d.getMinutes()+ 40 + Math.floor(Math.random() * 20)
   if(m>118){
       m = m-120
       h++
@@ -62,6 +68,9 @@ const randomTime3 = () => {
   }
   if(h>=12){
       h = h-12
+  }
+  if(m<10){
+    m = "0"+m
   }
   return(`${h}:${m}PM`)
 }

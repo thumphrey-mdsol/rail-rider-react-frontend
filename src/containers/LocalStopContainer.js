@@ -56,14 +56,13 @@ const LocalStopContainer = (props) => {
                         <Paper elevation={3}>
                             {console.log(station)}
                             <ClosestStationsCard statuses={props.statuses} key={innerArr[1]} name={station.stop_name} id={station.id}/>
-                            {console.log(innerArr[1], station.stop_name, station.id)}
                         </Paper>
                     </Grid>
                 )
             })
         }
     }
-    
+
     return(                    
         <Grid container className={classes.root} spacing={3}>
             {findDistances()}
