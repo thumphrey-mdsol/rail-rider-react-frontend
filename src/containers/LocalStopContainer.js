@@ -12,7 +12,6 @@ const useStyles = makeStyles({
 
 const LocalStopContainer = (props) => {
     const classes = useStyles(props)
-    const [closest, setClosest] = useState([])
 
     const [position, setPosition] = useState({});
     const [error, setError] = useState(null);
@@ -54,7 +53,6 @@ const LocalStopContainer = (props) => {
                 return (
                     <Grid key={innerArr[1]} item md={6}>
                         <Paper elevation={3}>
-                            {console.log(station)}
                             <ClosestStationsCard statuses={props.statuses} key={innerArr[1]} name={station.stop_name} id={station.id}/>
                         </Paper>
                     </Grid>
